@@ -1,0 +1,559 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #0a1220;
+  --bg-grad: #0d1a2e;
+  --panel: #101a2e;
+  --panel-alt: #16233b;
+  --line: #223252;
+
+  --amber: #ffb100;
+  --amber-dim: #7a5c1a;
+  --teal: #22d3a5;
+  --text: #f2efe4;
+  --muted: #99a6c2;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --radius: 10px;
+  --shadow-panel: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 900px 500px at 50% -10%, var(--bg-grad), transparent),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  padding: 0 0 5rem;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* faixa de "luzes de pista" fixa no rodapé da página */
+body::after {
+  content: '';
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--amber) 0 10px,
+    transparent 10px 26px
+  );
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+/* ---------- Hero / título principal ---------- */
+
+.container {
+  background: linear-gradient(180deg, var(--panel-alt), var(--panel));
+  border-bottom: 1px solid var(--line);
+  padding: 3.5rem 1.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: 'PARTIDAS · CHEGADAS · PARTIDAS · CHEGADAS';
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  color: var(--amber-dim);
+  white-space: nowrap;
+}
+
+.container h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.container h1::after {
+  content: '';
+  display: block;
+  width: 90px;
+  height: 4px;
+  margin: 1.1rem auto 0;
+  background: var(--amber);
+  border-radius: 2px;
+}
+
+/* ---------- Pista de decolagem (divisor de seção) ---------- */
+
+.pista {
+  max-width: 760px;
+  margin: 2.5rem auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.pista h2 {
+  font-size: 1.1rem;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.total-fila {
+  margin: 0.6rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--amber);
+  letter-spacing: 0.04em;
+}
+
+.pista::before,
+.pista::after {
+  content: '';
+  display: block;
+  height: 2px;
+  margin: 0.9rem auto;
+  max-width: 420px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--amber) 0 18px,
+    transparent 18px 34px
+  );
+  opacity: 0.7;
+}
+
+/* ---------- Próximo a Decolar ---------- */
+
+.proximo-a-decolar {
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+  padding: 1.75rem 1.75rem 2.25rem;
+  background: var(--panel);
+  border: 1px solid var(--amber-dim);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-panel);
+}
+
+.proximo-a-decolar h2 {
+  font-size: 1.5rem;
+  color: var(--amber);
+  margin-bottom: 1.25rem;
+}
+
+.proximo-a-decolar p {
+  font-family: var(--font-mono);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.cartao-proximo {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.8;
+  padding: 1rem 1.25rem;
+  background: var(--panel-alt);
+  border: 1px dashed var(--amber-dim);
+  border-radius: 8px;
+}
+
+.cartao-proximo strong {
+  display: inline-block;
+  color: var(--amber);
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.botao-decolar {
+  margin-top: 1.1rem;
+  background: var(--amber);
+  color: #1a1204;
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1.8rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.botao-decolar:hover {
+  box-shadow: 0 8px 24px -6px rgba(255, 177, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+.botao-decolar:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+}
+
+/* ---------- Buscar posição pelo número do voo ---------- */
+
+.buscar-voo {
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  padding: 1.1rem 1.25rem 1.4rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.buscar-voo h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.9rem;
+}
+
+.buscar-voo form {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.buscar-voo input[type="text"] {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.5rem 0.65rem;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.buscar-voo input[type="text"]:focus,
+.buscar-voo input[type="text"]:focus-visible {
+  outline: none;
+  border-color: var(--amber);
+  box-shadow: 0 0 0 3px rgba(255, 177, 0, 0.18);
+}
+
+.buscar-voo button {
+  background: transparent;
+  color: var(--teal);
+  border: 1px solid var(--teal);
+  border-radius: 6px;
+  padding: 0.5rem 1.1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.buscar-voo button:hover {
+  background: rgba(34, 211, 165, 0.1);
+}
+
+.resultado-busca {
+  margin: 0.9rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+/* ---------- Painéis genéricos ---------- */
+
+.fila-lista {
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+  padding: 1.75rem 1.75rem 2.25rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-panel);
+}
+
+.fila-lista h2 {
+  font-size: 1.5rem;
+  color: var(--amber);
+  margin-bottom: 1.25rem;
+}
+
+/* .add-voo fica deliberadamente mais discreto: painel menor e mais
+   estreito, sem sombra pesada, título sem destaque em âmbar */
+.add-voo {
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  padding: 1.1rem 1.25rem 1.4rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.add-voo h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.9rem;
+}
+
+.flash {
+  margin: 0 0 1rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.flash-erro {
+  background: rgba(255, 90, 90, 0.1);
+  border: 1px solid rgba(255, 90, 90, 0.4);
+  color: #ff9c9c;
+}
+
+.flash-sucesso {
+  background: rgba(34, 211, 165, 0.1);
+  border: 1px solid rgba(34, 211, 165, 0.4);
+  color: var(--teal);
+}
+
+/* ---------- Lista de voos: "canhotos de embarque" ---------- */
+
+.fila-lista p {
+  font-family: var(--font-mono);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.fila-lista > p:first-of-type a {
+  color: var(--teal);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--teal);
+  font-size: 0.85rem;
+}
+
+.fila-lista > p:first-of-type a:hover {
+  opacity: 0.75;
+}
+
+.fila-lista ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fila-lista li {
+  position: relative;
+  padding: 0.9rem 0;
+  border-bottom: 1px dashed var(--line);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.7;
+  animation: flicker-in 0.5s ease-out both;
+}
+
+.fila-lista li:last-child {
+  border-bottom: none;
+}
+
+.fila-lista li:nth-child(2) { animation-delay: 0.06s; }
+.fila-lista li:nth-child(3) { animation-delay: 0.12s; }
+.fila-lista li:nth-child(4) { animation-delay: 0.18s; }
+.fila-lista li:nth-child(n+5) { animation-delay: 0.24s; }
+
+.fila-lista li strong {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--amber);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.15rem;
+}
+
+.posicao {
+  display: inline-block;
+  width: fit-content;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--teal);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  margin-right: 0.6rem;
+  vertical-align: middle;
+}
+
+/* ---------- Formulário ---------- */
+
+.add-voo form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1rem;
+}
+
+/* o markup usa <br> soltos entre os campos em vez de um wrapper por
+   campo — escondemos os <br> e controlamos o espaçamento só pela
+   margem do input, pra não fixar layout em cima de uma estrutura
+   inconsistente */
+.add-voo form br {
+  display: none;
+}
+
+.add-voo label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0.7rem 0 0.3rem;
+}
+
+.add-voo label:first-of-type {
+  margin-top: 0;
+}
+
+.add-voo input[type="text"] {
+  display: block;
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.5rem 0.65rem;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.add-voo input[type="text"]::placeholder {
+  color: var(--muted);
+}
+
+.add-voo input[type="text"]:hover {
+  border-color: var(--amber-dim);
+}
+
+.add-voo input[type="text"]:focus,
+.add-voo input[type="text"]:focus-visible {
+  outline: none;
+  border-color: var(--amber);
+  box-shadow: 0 0 0 3px rgba(255, 177, 0, 0.18);
+}
+
+.add-voo button {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin-top: 1rem;
+  background: transparent;
+  color: var(--amber);
+  border: 1px solid var(--amber-dim);
+  border-radius: 999px;
+  padding: 0.45rem 1.3rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.add-voo button:hover {
+  background: rgba(255, 177, 0, 0.1);
+  border-color: var(--amber);
+  box-shadow: none;
+  transform: none;
+}
+
+.add-voo button:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+}
+
+/* ---------- Animação (com respeito a reduced motion) ---------- */
+
+@keyframes flicker-in {
+  0%   { opacity: 0; transform: translateY(4px); filter: blur(1px); }
+  60%  { opacity: 0.7; }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fila-lista li {
+    animation: none;
+  }
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 640px) {
+  .container {
+    padding: 2.5rem 1.25rem 2rem;
+  }
+
+  .container::before {
+    display: none;
+  }
+
+  .fila-lista {
+    margin: 0 1rem 2rem;
+    padding: 1.5rem 1.25rem 1.75rem;
+  }
+
+  .proximo-a-decolar {
+    margin: 0 1rem 2rem;
+    padding: 1.5rem 1.25rem 1.75rem;
+  }
+
+  .buscar-voo {
+    margin: 0 1rem 2rem;
+    padding: 1rem 1.1rem 1.25rem;
+  }
+
+  .buscar-voo form {
+    flex-direction: column;
+  }
+
+  .add-voo {
+    margin: 0 1rem 2rem;
+    padding: 1rem 1.1rem 1.25rem;
+  }
+
+  .add-voo form {
+    grid-template-columns: 1fr;
+  }
+}
