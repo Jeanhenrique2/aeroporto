@@ -77,7 +77,6 @@ O status da pista é armazenado em `$_SESSION['pistalivre']`. Quando o usuário 
 
 Os aviões cadastrados entram na fila de decolagem (`Filadecolagem.php`), e o botão de decolar (`Decolar.php`) remove o próximo avião da fila, atualizando o estado salvo na sessão.
 
-> 📝 **Nota:** essa seção descreve o funcionamento esperado com base na estrutura dos arquivos. Se algum desses arquivos funcionar de forma diferente, me avise para eu ajustar a explicação.
 
 ## 📄 Licença
 
